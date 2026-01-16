@@ -5,7 +5,8 @@
   "scripts": {
     "lint:css": "stylelint \"styles/**/*.css\" --allow-empty-input",
     "lint:html": "htmlhint \"src/**/*.html\"",
-    "lint": "npm run lint:html && npm run lint:css"
+    "lint": "npm run lint:html && npm run lint:css",
+    "build": "parcel build src/*.html --dist-dir dist"
   },
   "devDependencies": {
     "htmlhint": "^1.1.4",
