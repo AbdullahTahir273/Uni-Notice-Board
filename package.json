@@ -1,14 +1,16 @@
 {
-  "name": "university-digital-notice-board",
+  "name": "uni-notice-board",
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "lint:css": "stylelint \"styles/**/*.css\" --allow-empty-input",
     "lint:html": "htmlhint \"src/**/*.html\"",
-    "lint:css": "stylelint \"styles/**/*.css\"",
+    "lint": "npm run lint:html && npm run lint:css"
   },
   "devDependencies": {
-    "htmlhint": "^1.8.0",
-    "stylelint": "^17.0.0",
-    "stylelint-config-standard": "^40.0.0"
+    "htmlhint": "^1.1.4",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "parcel": "^2.10.0"
   }
 }
