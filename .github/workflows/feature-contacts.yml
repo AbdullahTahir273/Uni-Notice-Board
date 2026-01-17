@@ -2,33 +2,37 @@ name: Uni Notice Board CI
 
 on:
   push:
-    branches:
-      - develop
+    branches: [ "main", "develop" ]
   pull_request:
-    branches:
-      - develop
+    branches: [ "main" ]
 
 jobs:
-  lint:
-    name: Lint HTML & CSS
+  lint-and-build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      # 1. Checkout the code from GitHub
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      # 2. Set up Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm ci || npm install
+      # 3. Install dependencies
+      - name: Install Dependencies
+        run: npm install
 
+      # 4. Run HTMLHint
       - name: Run HTMLHint
-        run: npm run lint:html
+        run: npx htmlhint "**/*.html"
 
+      # 5. Run Stylelint
       - name: Run Stylelint
-        run: npm run lint:css
+        run: npx stylelint "**/*.css"
 
-
-
+      # 6. Build with Parcel
+      - name: Build Project
+        run: npx parcel build index.html --dist-dir dist
