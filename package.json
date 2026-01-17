@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint:css": "stylelint \"styles/**/*.css\"",
+    "lint:css": "stylelint \"styles/**/*.css\" --config .stylelintrc.json",
     "lint:html": "htmlhint \"src/**/*.html\"",
     "lint": "npm run lint:html && npm run lint:css",
     "build": "parcel build src/*.html --dist-dir dist"
